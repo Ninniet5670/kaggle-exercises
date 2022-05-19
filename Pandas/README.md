@@ -150,4 +150,4 @@ def stars(row):
 star_ratings = reviews.apply(stars, axis=1)
 ```
 
-o código acima utiliza-se do .apply() para checar cada linha do "points" se o valor é maior ou menor de um certo quanto, e dependendo dele, retornando de 1 a 3 
+o código acima utiliza-se do `.apply()` para checar cada linha do "points" se o valor é maior ou menor de um certo quanto, e dependendo dele, retornando de 1 a 3 
