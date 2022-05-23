@@ -151,3 +151,37 @@ star_ratings = reviews.apply(stars, axis=1)
 ```
 
 o código acima utiliza-se do `.apply()` para checar cada linha do "points" se o valor é maior ou menor de um certo quanto, e dependendo dele, retornando de 1 a 3 
+
+
+
+São VÁRIAS as aplicações fáceis e práticas de um `.groupby()` 
+
+```python
+reviews.groupby('points').points.count()
+```
+
+o código acima por exemplo é o `.value_counts()` escrito de outra forma
+
+Pense que cada grupo é uma parte do DataFrame contendo apenas dados com valores que são iguais
+
+É possível também agrupar com mais de uma coluna
+
+```python
+reviews.groupby(['country', 'province']).apply(lambda df: df.loc[df.points.idxmax()])
+```
+
+o código acima retorna o melhor vinho por país e província, possuindo 2 index no processo
+
+Um método poderosíssimo é o `.agg()`, permitindo passar uma lista de funções de uma só vez
+
+```python
+reviews.groupby('country').price.agg([len, min, max])
+```
+
+o código acima cria um DataFrame com os valores de preço com "len", "min" e "max" de cada país
+
+
+
+É possível selecionar por qual coluna será sorteado o DataFrame por meio do parâmetro `by` do `.sort_values()`, podendo ele aceitar até listas com vários objetos
+
+E para sortear por index, usa-se `.sort_index()`
