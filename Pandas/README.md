@@ -185,3 +185,53 @@ o código acima cria um DataFrame com os valores de preço com "len", "min" e "m
 É possível selecionar por qual coluna será sorteado o DataFrame por meio do parâmetro `by` do `.sort_values()`, podendo ele aceitar até listas com vários objetos
 
 E para sortear por index, usa-se `.sort_index()`
+
+
+
+Colunas que consistem inteiramente de Strings não recebem seu próprio valor, recebendo o valor de `object` invés disso
+
+
+
+Caso a conversão seja possível, usa-se o método `.astype()` para converter os valores de tal coluna
+
+```python
+reviews.points.astype('float64')
+```
+
+
+
+`NaN` significa "Not A Number", sendo do tipo `float64` por razões técnicas
+
+Para selecionar os valores NaN, faz-se:
+
+```python
+reviews[pd.isnull(reviews.country)]
+```
+
+
+
+É possível usar a função `replace()` como um método para substituir valores 
+
+Para renomear nomes de index e colunas, usa-se a função `rename()`
+
+```python
+reviews.rename(columns = {'points': 'scores'})
+
+# reviews.rename(columns = dict(points = 'scores')) ou desta forma transformando a tupla em dicionário
+```
+
+o código acima renomeia a coluna "points" para o nome de "scores"
+
+para mudar o index, usa-se o parâmetro `index` (a função `set_index()` é mais usada neste caso)
+
+
+
+Ambas as linhas e colunas do index podem ter seu próprio atributo `name`, utiliza-se então o método `rename_axis()` para mudar tais nomes
+
+```python
+reviews.rename_axis('wines', axis='rows').rename_axis('fields', axis='columns')
+```
+
+
+
+> não entendi a ultima questão
