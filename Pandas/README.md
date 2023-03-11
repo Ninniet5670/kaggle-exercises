@@ -40,7 +40,7 @@ book.iloc[:, 0]
 
 o código acima pega a primeira coluna do DataFrame
 
-o ";" significa tudo quando combinado com outros seletores, indicando um range de valores
+o ":" significa tudo quando combinado com outros seletores, indicando um range de valores
 
 > entender o conceito de list slicing é muito bom pra isso
 
